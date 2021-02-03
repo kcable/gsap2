@@ -1,5 +1,7 @@
 import config from '../config';
 import EventEmitter from 'eventemitter3';
+import Saucer from './custom/Saucer';
+import Animation from './custom/Animation';
 
 const EVENTS = {
   APP_READY: 'app_ready',
@@ -31,7 +33,8 @@ export default class Application extends EventEmitter {
    */
   async init() {
     // Initiate classes and wait for async operations here.
-
+        let animation = new Animation();
+        await animation.start();
     this.emit(Application.events.APP_READY);
   }
 }
