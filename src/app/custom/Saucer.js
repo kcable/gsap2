@@ -42,7 +42,7 @@ export default class Saucer extends EventEmitter {
         opacity: 0.6,
         id: "showBottomBeam",
       });
-      this.emit("BEAM_SHOWED");
+      this.emit("beam_showed");
     } else {
        gsap.to(this._beamTopElement, {
         opacity: 0,
@@ -52,7 +52,7 @@ export default class Saucer extends EventEmitter {
         opacity: 0,
         id: "hideBottomBeam",
       });
-      this.emit("BEAM_HIDE");
+      this.emit("beam_hide");
     }
   }
 }
