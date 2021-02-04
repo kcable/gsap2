@@ -14,7 +14,7 @@ export default class Cow extends EventEmitter {
 
   async moveTo() {
     await gsap.to(this._cowElement, { y: -390, id:"cowAbduction", duration:3 });
-    this.emit("COW_ABDUCTED");
+    this.emit("ABDUCT_COMPLETED");
     this.hide();
   }
 
