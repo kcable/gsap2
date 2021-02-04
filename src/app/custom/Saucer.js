@@ -17,10 +17,14 @@ export default class Saucer extends EventEmitter {
       BEAM_HIDE: "beam_hide",
     };
   }
-
   async moveTo(flag) {
     if (flag) {
-      await gsap.to(this._saucerElement, { x: -835, duration: 3, id: "flyIn" });
+      const flyInTimeline = gsap.timeline();
+      await flyInTimeline.to(this._saucerElement, {
+        x: -835,
+        duration: 3,
+        id: "flyIn",
+      });
       this.emit("fly_in");
     } else {
       await gsap.to(this._saucerElement, {
@@ -28,31 +32,31 @@ export default class Saucer extends EventEmitter {
         duration: 3,
         id: "flyOut",
       });
-      this.emit('fly_away');
+      this.emit("fly_away");
     }
   }
 
   async toggleBeam(flag) {
-    if (flag) {
-       gsap.to(this._beamTopElement, {
-        opacity: 0.6,
-        id: "showTopBeam",
-      });
-      await gsap.to(this._beamBottomElement, {
-        opacity: 0.6,
-        id: "showBottomBeam",
-      });
-      this.emit("beam_showed");
-    } else {
-       gsap.to(this._beamTopElement, {
-        opacity: 0,
-        id: "hideTopBeam",
-      });
-      await gsap.to(this._beamBottomElement, {
-        opacity: 0,
-        id: "hideBottomBeam",
-      });
-      this.emit("beam_hide");
-    }
+      if(flag){
+        gsap.to(this._beamTopElement, {
+          opacity: 0.6,
+          id: "showTopBeam",
+        });
+        await gsap.to(this._beamBottomElement, {
+          opacity: 0.6,
+          id: "showBottomBeam",
+        });
+        this.emit("beam_show");
+      } else {
+        gsap.to(this._beamTopElement, {
+          opacity: 0,
+          id: "hideTopBeam",
+        });
+        await gsap.to(this._beamBottomElement, {
+          opacity: 0,
+          id: "hideBottomBeam",
+        });
+        this.emit("beam_hide");
+      }
   }
 }

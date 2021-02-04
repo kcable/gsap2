@@ -11,7 +11,7 @@ export default class Animation {
     await this.saucer.moveTo(true);
     await this.saucer.toggleBeam(true);
     await this.cow.moveTo();
-    this.cow.hide();
+    await this.cow.hide();
     await this.saucer.toggleBeam(false);
     await this.saucer.moveTo(false);
   }
